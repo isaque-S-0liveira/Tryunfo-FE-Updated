@@ -1,0 +1,9 @@
+#logoTryunfo img {
+    height: 302px;
+}
+
+@media screen and (max-width: 576px) {
+    #logoTryunfo img {
+        height: 200px;
+    }
+}

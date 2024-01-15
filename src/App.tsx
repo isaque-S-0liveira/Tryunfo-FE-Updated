@@ -1,6 +1,12 @@
+import GeneratorCheap from './components/GeneratorCheap/GeneratorCheap';
+import LogoTryunfo from './components/LogoTryunfo/LogoTryunfo';
+
 function App() {
   return (
-    <div />
+    <main>
+      <LogoTryunfo />
+      <GeneratorCheap />
+    </main>
   );
 }
 

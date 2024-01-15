@@ -1,0 +1,86 @@
+#newCheapContainer input, #descricao{
+    border-radius: 2px;
+    border: 1px solid #29313D;
+}
+
+#newCheapContainer #nome, #descricao {
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+#newCheapContainer input:focus, #descricao:focus {
+    box-shadow: none;
+}
+
+#newCheapContainer #descricao {
+    height: 10px;
+}
+
+#newCheapContainer label {
+    font-family: Verdana;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+#newCheapContainer .input-group-text {
+    border-radius: 2px 0px 0px 2px;
+    border: 1px solid #29313D;
+    background: #023031;
+}
+
+#newCheapContainer i {
+    color: #ffff;
+}
+
+#newCheapContainer select {
+    border-top: none;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-color: rgba(61, 73, 92, 1);
+}
+
+#newCheapContainer select:focus {
+    box-shadow: none;
+}
+
+#newCheapContainer #Super-trunfo:checked{
+   background-color: rgba(3, 107, 82, 1);
+}
+
+
+#newCheapContainer button {
+    background-color: rgba(47, 193, 140, 1);
+    border: 1px solid rgba(47, 193, 140, 1);
+    color: rgba(255, 255, 255, 1);
+    border-radius: 2px;
+    padding: 8px 50px;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+    transition: .5s;
+}
+
+#newCheapContainer button:hover {
+    background-color: rgb(5, 106, 71);;
+}
+
+@media screen and (min-width: 768px) {
+    #checkBox-button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #checkBox-button-container .form-check {
+        width: 50%;
+    }
+
+    #checkBox-button-container button {
+        padding: 8px;
+        width: 30%;
+    }
+}
+
