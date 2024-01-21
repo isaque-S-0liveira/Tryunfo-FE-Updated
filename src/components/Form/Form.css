@@ -26,15 +26,26 @@
     line-height: 150%;
 }
 
-#newCheapContainer .input-group-text {
+.feedback{
+    padding-left: 20px;
+    margin-top: 5px;
+    width: 10px;
+}
+
+.feedback .bi-exclamation-circle {
+    color: red;
+}
+
+#newCheapContainer #span-link {
     border-radius: 2px 0px 0px 2px;
     border: 1px solid #29313D;
     background: #023031;
+    padding:0px 20px;
 }
-
-#newCheapContainer i {
+#newCheapContainer #icon-link {
     color: #ffff;
 }
+
 
 #newCheapContainer select {
     border-top: none;
@@ -82,5 +93,15 @@
         padding: 8px;
         width: 30%;
     }
+}
+
+
+#pontos-restantes {
+    color: var(--gray-700, #3D495C);
+    font-family: Verdana;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; 
 }
 

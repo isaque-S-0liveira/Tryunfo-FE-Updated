@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { InputSelectProps } from '../../types/Form';
+import { GenericInputEvent } from '../../types/InputEvents';
+import handleInputChange from '../../helpers/InputController';
 
-function InputSelect({ id, label, options }: InputSelectProps) {
-  const [selectedOption, setSelectedOption] = useState('Comum');
+function InputSelect({ id, label, options, onChange }: InputSelectProps) {
+  const [selectedOption, setSelectedOption] = useState<string | number>('Comum');
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOption(event.target.value);
+  const handleInput = (event: GenericInputEvent) => {
+    handleInputChange(event, setSelectedOption, onChange);
   };
 
   return (
@@ -17,7 +19,7 @@ function InputSelect({ id, label, options }: InputSelectProps) {
         className="form-select"
         id={ id }
         value={ selectedOption }
-        onChange={ handleChange }
+        onChange={ handleInput }
       >
         {options.map((option) => (
           <option key={ option } value={ option }>
