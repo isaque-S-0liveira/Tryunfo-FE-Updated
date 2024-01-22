@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-max-depth */
@@ -27,7 +28,7 @@ function Form() {
   const [feedbackAtt1, setFeedbackAtt1] = useState('');
   const [feedbackAtt2, setFeedbackAtt2] = useState('');
   const [feedbackAtt3, setFeedbackAtt3] = useState('');
-  const [points, setPoints] = useState(210);
+  const [points, setPoints] = useState(270);
   const [card, setCard] = useState(initialCardState);
 
   const handleChange = (event: GenericInputEvent) => {
@@ -39,52 +40,48 @@ function Form() {
   };
 
   useEffect(() => {
-    if (card.nome.length > 0) {
-      if (card.nome.length >= 3) {
-        setFeedbackName('success');
+    const { atributo1, atributo2, atributo3 } = card;
+    const sum = Number(atributo1) + Number(atributo2) + Number(atributo3);
+    const newPoints = 270 - sum;
+    setPoints(newPoints);
+  }, [card.atributo1, card.atributo2, card.atributo3, card]);
+
+  const createInputStringEffect = (
+    input: 'nome' | 'descricao',
+    condition: number,
+    setFeedback: React.Dispatch<React.SetStateAction<string>>,
+  ) => {
+    useEffect(() => {
+      if (card[input].length > 0) {
+        if (card[input].length >= condition) {
+          setFeedback('success');
+        } else {
+          setFeedback('error');
+        }
       } else {
-        setFeedbackName('error');
+        setFeedback('');
       }
-    } else {
-      setFeedbackName('');
-    }
-  }, [card.nome]);
+    }, [card[input]]);
+  };
 
-  useEffect(() => {
-    if (card.descricao.length > 0) {
-      if (card.descricao.length >= 5) {
-        setFeedbackDescricao('success');
+  const createAttributeEffect = (
+    attribute: 'atributo1' | 'atributo2' | 'atributo3',
+    setFeedback: React.Dispatch<React.SetStateAction<string>>,
+  ) => {
+    useEffect(() => {
+      if (card[attribute] >= 0 && card[attribute] <= 90) {
+        setFeedback('success');
       } else {
-        setFeedbackDescricao('error');
+        setFeedback('error');
       }
-    } else {
-      setFeedbackDescricao('');
-    }
-  }, [card.descricao]);
+    }, [card[attribute]]);
+  };
 
-  useEffect(() => {
-    if (card.atributo1 >= 0 && card.atributo1 <= 90) {
-      setFeedbackAtt1('success');
-    } else {
-      setFeedbackAtt1('error');
-    }
-  }, [card.atributo1]);
-
-  useEffect(() => {
-    if (card.atributo2 >= 0 && card.atributo2 <= 90) {
-      setFeedbackAtt2('success');
-    } else {
-      setFeedbackAtt2('error');
-    }
-  }, [card.atributo2]);
-
-  useEffect(() => {
-    if (card.atributo3 >= 0 && card.atributo3 <= 90) {
-      setFeedbackAtt3('success');
-    } else {
-      setFeedbackAtt3('error');
-    }
-  }, [card.atributo3]);
+  createInputStringEffect('nome', 3, setFeedbackName);
+  createInputStringEffect('descricao', 5, setFeedbackDescricao);
+  createAttributeEffect('atributo1', setFeedbackAtt1);
+  createAttributeEffect('atributo2', setFeedbackAtt2);
+  createAttributeEffect('atributo3', setFeedbackAtt3);
 
   useEffect(() => {
     const feedbacks = [feedbackName, feedbackDescricao, feedbackAtt1, feedbackAtt2, feedbackAtt3];
@@ -157,7 +154,7 @@ function Form() {
           />
 
           <div className="col-12 d-flex justify-content-end mb-3">
-            <span id="pontos-restantes" className="me-5">
+            <span id="pontos-restantes" className={ `${points > 0 && points <= 270 ? 'text-success' : 'text-danger'} me-5` }>
               Pontos restantes:
               {' '}
               {points}
