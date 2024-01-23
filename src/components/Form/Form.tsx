@@ -2,7 +2,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-max-depth */
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Input from './Input';
 import './Form.css';
 import Title from '../Title/Title';
@@ -10,18 +10,13 @@ import InputSelect from './InputSelect';
 import CheckBox from './CheckBox';
 import Button from './Button';
 import { GenericInputEvent } from '../../types/InputEvents';
+import initialCardState from '../../helpers/initialCardState';
+import CardContext from '../../context/cardContext';
+import Card from '../Card/Card';
 
 function Form() {
   const ATTR_MESSAGE = 'Atributo deve ser um número entre 0 e 90';
-  const initialCardState = {
-    nome: '',
-    descricao: '',
-    atributo1: 0,
-    atributo2: 0,
-    atributo3: 0,
-    'imagem-link': '',
-    raridade: 'Comum',
-  };
+  const cardContext = useContext(CardContext);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [feedbackName, setFeedbackName] = useState('');
   const [feedbackDescricao, setFeedbackDescricao] = useState('');
@@ -38,6 +33,10 @@ function Form() {
       [id]: value,
     }));
   };
+
+  useEffect(() => {
+    cardContext.setCardCT(card);
+  }, [card]);
 
   useEffect(() => {
     const { atributo1, atributo2, atributo3 } = card;
@@ -92,7 +91,7 @@ function Form() {
   }, [feedbackName, feedbackDescricao, feedbackAtt1, feedbackAtt2, feedbackAtt3]);
 
   return (
-    <div id="newCheapContainer" className="col-12 col-md-7 p-5 ">
+    <div id="newCheapContainer" className="col-12 pe-5 ps-5 pe-md-2 ps-md-5 col-md-6 pb-5 ">
       <Title color="#2FC18C" className="h3" title="Adicione nova carta" />
       <form>
         <Input
@@ -186,7 +185,7 @@ function Form() {
           <div id="checkBox-button-container" className="row">
             <CheckBox onChange={ handleChange } className="col-12 mb-5 mb-md-0" id="Super-trunfo" label="Super Trybe Trunfo" />
 
-            {/* Prévia do baralho */}
+            <Card className="d-md-none" />
 
             <Button className="col-12 mt-5 mt-md-0" text="Salvar" onClick={ () => {} } disabled={ buttonDisable } />
           </div>

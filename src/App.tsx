@@ -1,11 +1,14 @@
 import GeneratorCheap from './components/GeneratorCheap/GeneratorCheap';
 import LogoTryunfo from './components/LogoTryunfo/LogoTryunfo';
+import CardProvider from './context/cardProvider';
 
 function App() {
   return (
     <main>
       <LogoTryunfo />
-      <GeneratorCheap />
+      <CardProvider>
+        <GeneratorCheap />
+      </CardProvider>
     </main>
   );
 }
