@@ -32,7 +32,7 @@ function Card({ className }: { className: string }) {
         <div className="pt-3 pb-3 ">
           <header className="card-header">
             <span id={ cardCT.raridade } className="Raridade">{cardCT.raridade}</span>
-            <h3>{cardCT.nome ? cardCT.nome : 'Nome'}</h3>
+            <h3 id={ cardCT.raridade }>{cardCT.nome ? cardCT.nome : 'Nome'}</h3>
           </header>
           <div id="card-img-container">
             <img
