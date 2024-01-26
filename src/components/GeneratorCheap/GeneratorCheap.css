@@ -1,7 +1,33 @@
 #generatorCheapContainer {
     background-color: #ffff;
-    
     box-shadow: 0px 4px 19px 0px rgba(0, 0, 0, 0.80);
+}
+
+@media screen and (min-width: 768px) {
+    #generatorCheapContainer.container {
+        max-width: 100%;
+    }
+    
+}
+
+@media screen and (min-width: 992px) {
+    #generatorCheapContainer.container {
+        max-width: 	960px;
+    }
+    
+}
+
+@media screen and (min-width: 1200px) {
+    #generatorCheapContainer.container {
+        max-width: 	1140px;
+    }
+    
+}
+
+@media screen and (min-width: 1400px) {
+    #generatorCheapContainer.container {
+        max-width: 	1320px;
+    }
 }
 
 @media screen and (min-width: 576px) {

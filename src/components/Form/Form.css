@@ -1,3 +1,4 @@
+
 #newCheapContainer input, #descricao{
     border-radius: 2px;
     border: 1px solid #29313D;
@@ -55,6 +56,8 @@
     border-color: rgba(61, 73, 92, 1);
 }
 
+
+
 #newCheapContainer select:focus {
     box-shadow: none;
 }
@@ -78,6 +81,11 @@
     background-color: rgb(5, 106, 71);;
 }
 
+#checkBox-button-container .form-check {
+    padding-left: 70px;
+}
+
+
 @media screen and (min-width: 768px) {
     #checkBox-button-container {
         display: flex;
@@ -86,18 +94,23 @@
     }
 
     #checkBox-button-container .form-check {
-        width: 50%;
+        width: 70%;
+        white-space: nowrap;
+    }
+
+    #checkBox-button-container #button {
+        width: 30%;
     }
 
     #checkBox-button-container button {
         padding: 8px;
-        width: 30%;
     }
 }
 
 
+
+
 #pontos-restantes {
-    color: var(--gray-700, #3D495C);
     font-family: Verdana;
     font-size: 1em;
     font-style: normal;

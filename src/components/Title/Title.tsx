@@ -3,12 +3,14 @@ import './Title.css';
 type TitleProps = {
   className: string;
   title: string;
-  color: string;
+  color?: string;
 };
 
-function Title({ className, title, color }: TitleProps) {
+function Title({ className, title, color = '' }: TitleProps) {
   return (
-    <p id="Title" style={ { color } } className={ className }>{title}</p>
+    <header>
+      <p id="Title" style={ { color } } className={ className }>{title}</p>
+    </header>
   );
 }
 

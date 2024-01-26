@@ -1,9 +1,9 @@
 const initialCardState = {
   nome: '',
   descricao: '',
-  atributo1: 0,
-  atributo2: 0,
-  atributo3: 0,
+  Attr01: 0,
+  Attr02: 0,
+  Attr03: 0,
   'imagem-link': '',
   raridade: 'Comum',
 };

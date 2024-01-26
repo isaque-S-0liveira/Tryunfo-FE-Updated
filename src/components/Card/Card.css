@@ -1,0 +1,106 @@
+
+@media screen and (min-width: 768px) {
+    #card-main-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    
+}
+#card-container  {
+    border: 1px solid #ccc;
+    background-color: rgba(3, 107, 82, 1);
+    box-shadow: 0px 3.893108367919922px 18.492263793945312px 0px rgb(0, 0, 0);
+    max-width: 358.17px;
+    border-radius: 10px;
+}
+
+#card-container .card-header {
+    display: flex;
+    background-color: rgba(2, 48, 49, 1);
+    color: rgba(255, 255, 255, 1);
+    padding: 10px;
+    justify-content: end;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#card-container .card-header h3 {
+    padding-right: 15px;
+}
+
+#card-img-container {
+    height: 270px;
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); /* Define a forma da linha inclinada */
+}
+
+#card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+#descricao-container {
+    background-color: transparent;
+    height: auto;
+    max-height: 90px;
+    overflow: auto;
+    transform: skewY(-6deg);
+}
+
+#descricao-container p {
+    margin-bottom: 0px;
+    word-wrap: break-word;
+    color: rgba(255, 255, 255, 1);
+}
+
+#descricao-container::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+}
+
+#descricao-container::-webkit-scrollbar-thumb {
+    background-color: rgba(169, 169, 169, 0.468); /* Cor da alça da barra de rolagem */
+}
+
+#descricao-container::-webkit-scrollbar-track {
+    background-color:transparent; /* Cor da trilha da barra de rolagem */
+}
+
+#atributos-container {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 1);
+    height: 200px;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon( 0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+#atributos-container .Atrribute-container {
+    background-color: rgba(61, 73, 92, 0.124);
+    display: flex;
+}
+
+#atributos-container .att-label {
+    font-weight: bold;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+#atributos-container .att-value {
+  background-color: rgba(3, 107, 82, 1);
+  margin-left: 15px;
+  width: 46.72px;
+  height: 29.92px;
+ 
+}
+
+#atributos-container .att-value p {
+     padding-left: 10px;
+    padding-top: 5px; 
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Epilogue';
+    font-weight: 600;
+}
