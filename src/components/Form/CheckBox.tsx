@@ -1,13 +1,16 @@
 import { useState } from 'react';
 import { BaseInputProps } from '../../types/Form';
-import { GenericInputEvent } from '../../types/InputEvents';
+import { CheckboxInputEvent } from '../../types/InputEvents';
 
 function CheckBox({ id, label, className, onChange }: BaseInputProps) {
   const [inputValue, setInputValue] = useState(false);
 
-  const handleCheckBoxChange = (event: GenericInputEvent) => {
-    setInputValue(!inputValue);
-    onChange(event);
+  const handleCheckBoxChange = (event: CheckboxInputEvent) => {
+    setInputValue((prevValue) => {
+      const newValue = !prevValue;
+      onChange(event);
+      return newValue;
+    });
   };
 
   return (
@@ -16,7 +19,7 @@ function CheckBox({ id, label, className, onChange }: BaseInputProps) {
         className="form-check-input"
         checked={ inputValue }
         type="checkbox"
-        value="super-trunfo"
+        value={ String(inputValue) }
         id={ id }
         onChange={ handleCheckBoxChange }
       />

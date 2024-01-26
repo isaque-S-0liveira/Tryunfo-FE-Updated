@@ -9,7 +9,7 @@ import Title from '../Title/Title';
 import InputSelect from './InputSelect';
 import CheckBox from './CheckBox';
 import Button from './Button';
-import { GenericInputEvent } from '../../types/InputEvents';
+import { CheckboxInputEvent, GenericInputEvent } from '../../types/InputEvents';
 import initialCardState from '../../helpers/initialCardState';
 import CardContext from '../../context/cardContext';
 import Card from '../Card/Card';
@@ -27,11 +27,19 @@ function Form() {
   const [card, setCard] = useState(initialCardState);
 
   const handleChange = (event: GenericInputEvent) => {
-    const { id, value } = event.target;
+    const { id, value, type } = event.target;
     setCard((prevCard) => ({
       ...prevCard,
       [id]: value,
     }));
+
+    if (type === 'checkbox') {
+      const target = event.target as HTMLInputElement;
+      setCard((prevCard) => ({
+        ...prevCard,
+        [id]: target.checked,
+      }));
+    }
   };
 
   useEffect(() => {

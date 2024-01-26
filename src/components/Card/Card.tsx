@@ -5,6 +5,7 @@ import './Card.css';
 import Title from '../Title/Title';
 import pointGenerator from '../../helpers/pointGenerator';
 import Atrribute from './Attribute';
+import SuperTryunfo from '../../assets/logo_tryunfo.png';
 import validarImagem from '../../helpers/validateImg';
 
 function Card({ className }: { className: string }) {
@@ -19,7 +20,7 @@ function Card({ className }: { className: string }) {
     } else {
       setImagemValida(false);
     }
-  }, [cardCT]);
+  }, [cardCT[IMG_LINK]]);
 
   return (
     <section id="card-main-container" className={ `col-6 ${className}` }>
@@ -34,10 +35,14 @@ function Card({ className }: { className: string }) {
           </header>
           <div id="card-img-container">
             <img
+              id="card-img"
               src={ imagemValida ? cardCT[IMG_LINK] : GIF_DEFAULT }
               alt="Imagem do card"
               className="img-fluid h-100"
             />
+            { cardCT['Super-trunfo'] && (
+              <img id="super-tryunfo-img" src={ SuperTryunfo } alt="Super-Tryunfo" />
+            )}
           </div>
           <div id="descricao-container">
 

@@ -2,3 +2,4 @@
 export type GenericInputEvent = React.ChangeEvent<
 HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
 >;
+export type CheckboxInputEvent = React.ChangeEvent<HTMLInputElement>;

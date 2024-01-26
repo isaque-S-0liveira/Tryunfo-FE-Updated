@@ -31,15 +31,26 @@
 
 #card-img-container {
     height: 270px;
+    position: relative; /* Importante para posicionar elementos filhos relativamente a este contêiner */
     clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); /* Define a forma da linha inclinada */
 }
 
-#card-img-container img {
+#card-img-container #card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    z-index: 1;
 
+}
+
+#card-img-container #super-tryunfo-img{
+    position: absolute; /* Posiciona em relação ao #card-img-container */
+    bottom: 30px; /* Ajusta conforme necessário */
+    right: 0; /* Ajusta conforme necessário */
+    z-index: 2; /* Coloca acima da imagem principal */
+    width: 140.04px;
+    /* height: 69.49px; */
 }
 
 #descricao-container {
