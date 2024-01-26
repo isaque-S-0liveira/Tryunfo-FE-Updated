@@ -21,12 +21,34 @@
     background-color: rgba(2, 48, 49, 1);
     color: rgba(255, 255, 255, 1);
     padding: 10px;
-    justify-content: end;
+    justify-content: space-between;
     border-radius: 10px 10px 0px 0px;
 }
 
 #card-container .card-header h3 {
     padding-right: 15px;
+}
+
+#card-container .card-header .Raridade {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-left: .5em;
+}
+
+#card-container .card-header #Comum {
+    color: rgb(255, 255, 255);
+}
+
+#card-container .card-header #Raro {
+    color: aqua;
+}
+
+#card-container .card-header #Épico {
+    color: rgb(236, 92, 246);
+}
+
+#card-container .card-header #Lendário {
+    color: rgb(255, 153, 0);
 }
 
 #card-img-container {

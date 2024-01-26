@@ -31,6 +31,7 @@ function Card({ className }: { className: string }) {
       <div id="card-container" className="container">
         <div className="pt-3 pb-3 ">
           <header className="card-header">
+            <span id={ cardCT.raridade } className="Raridade">{cardCT.raridade}</span>
             <h3>{cardCT.nome ? cardCT.nome : 'Nome'}</h3>
           </header>
           <div id="card-img-container">
