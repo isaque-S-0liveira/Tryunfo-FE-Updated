@@ -3,18 +3,25 @@ import { InputSelectProps } from '../../types/Form';
 import { GenericInputEvent } from '../../types/InputEvents';
 import handleInputChange from '../../helpers/InputController';
 
-function InputSelect({ id, label, options, className, onChange }: InputSelectProps) {
-  const [selectedOption, setSelectedOption] = useState<string | number>('Comum');
+function InputSelect({
+  id,
+  inline,
+  label,
+  options,
+  className,
+  onChange,
+}: InputSelectProps) {
+  const [selectedOption, setSelectedOption] = useState<string | number>('');
 
   const handleInput = (event: GenericInputEvent) => {
     handleInputChange(event, setSelectedOption, onChange);
   };
 
   return (
-    <div className={ `mt-4 ${className}` }>
-      <label className="mb-2" htmlFor={ id }>{label}</label>
-      <div className="d-flex">
+    <div className={ `${className} ${inline ? 'row' : ''}` }>
+      {label !== '' && <label className="mb-2" htmlFor={ id }>{label}</label>}
 
+      <div className="d-flex">
         <select
           aria-label="Raridade"
           className="form-select"

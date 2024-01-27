@@ -2,7 +2,7 @@ import { GenericInputEvent } from './InputEvents';
 
 export type BaseInputProps = {
   id: string;
-  label: string;
+  label?: string;
   type?: string;
   inline?: boolean;
   tag?: 'input' | 'textarea';
@@ -20,19 +20,12 @@ export type BaseInputProps = {
   onChange: (event: GenericInputEvent) => void;
 };
 
-export type LabelProps = {
-  id: string;
-  label: string;
-  className?: string;
-};
-
 export type InputGroupProps = BaseInputProps & {
   icon: string;
   ariaLabel: string;
 };
 
 export type InputSelectProps = BaseInputProps & {
-  label: string;
   options: string[];
 };
 

@@ -1,4 +1,5 @@
 const initialCardState = {
+  id: 0,
   nome: '',
   descricao: '',
   'Super-trunfo': false,

@@ -132,9 +132,9 @@
 
 #atributos-container .att-label {
     font-weight: bold;
-    font-size: 1em;
     color: rgba(0, 0, 0, 0.8);
 }
+
 
 #atributos-container .att-value {
   background-color: rgba(3, 107, 82, 1);

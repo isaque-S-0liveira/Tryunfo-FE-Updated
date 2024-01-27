@@ -1,12 +1,13 @@
 type AtrributeProps = {
   label: string;
   value: number;
+  attrFontSize:string;
 };
 
-function Atrribute({ label, value }: AtrributeProps) {
+function Atrribute({ label, value, attrFontSize }: AtrributeProps) {
   return (
     <div className="Atrribute-container flex flex-col mb-3 ">
-      <span className="att-label">{label}</span>
+      <span style={ { fontSize: attrFontSize } } className="att-label">{label}</span>
       <div className="att-value">
         <p>{value}</p>
       </div>

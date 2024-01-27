@@ -28,7 +28,9 @@ function Input({
   return (
     <div className={ `${className}` }>
       <div className={ `${inline ? 'row' : ''}` }>
-        <label className="col-sm-3 col-form-label" htmlFor={ id }>{label}</label>
+        {label !== '' && (
+          <label className="col-sm-3 col-form-label" htmlFor={ id }>{label}</label>)}
+
         <div className="input-group col">
           <InputTag
             onChange={ handleInput }

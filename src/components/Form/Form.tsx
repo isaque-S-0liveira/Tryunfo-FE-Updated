@@ -1,5 +1,5 @@
+/* eslint-disable max-lines */
 /* eslint-disable react/jsx-max-depth */
-/* eslint-disable max-len */
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { useContext, useEffect, useState } from 'react';
@@ -9,14 +9,18 @@ import Title from '../Title/Title';
 import InputSelect from './InputSelect';
 import CheckBox from './CheckBox';
 import Button from './Button';
-import { CheckboxInputEvent, GenericInputEvent } from '../../types/InputEvents';
+import { GenericInputEvent } from '../../types/InputEvents';
 import initialCardState from '../../helpers/initialCardState';
 import CardContext from '../../context/cardContext';
 import Card from '../Card/Card';
+import { RaridadeOptions } from '../../helpers/formsHelpers';
+import { CardType } from '../../types/card';
+import allCardContext from '../../context/allCardContext';
 
 function Form() {
   const ATTR_MESSAGE = 'Atributo deve ser um número entre 0 e 90';
   const { setCardCT } = useContext(CardContext);
+  const { setAllCardCT } = useContext(allCardContext);
   const [buttonDisable, setButtonDisable] = useState(true);
   const [feedbackName, setFeedbackName] = useState('');
   const [feedbackDescricao, setFeedbackDescricao] = useState('');
@@ -25,6 +29,19 @@ function Form() {
   const [feedbackAtt3, setFeedbackAtt3] = useState('');
   const [points, setPoints] = useState(270);
   const [card, setCard] = useState(initialCardState);
+  const [allCards, setAllCards] = useState<CardType[]>([]);
+
+  const handleClick = () => {
+    const newCard: CardType = {
+      ...card,
+      id: allCards.length + 1,
+    };
+    setAllCards((prevAllCards) => [...prevAllCards, newCard]);
+  };
+
+  useEffect(() => {
+    setAllCardCT(allCards);
+  }, [allCards]);
 
   const handleChange = (event: GenericInputEvent) => {
     const { id, value, type } = event.target;
@@ -125,7 +142,6 @@ function Form() {
             type="text"
             label="Nome:"
             feedBack={ feedbackName }
-            className=" "
             feedBackMessage="Nome deve ter no mínimo 3 caracteres"
           />
           <Input
@@ -135,7 +151,6 @@ function Form() {
             tag="textarea"
             onChange={ handleChange }
             feedBack={ feedbackDescricao }
-            className=" "
             feedBackMessage="Descrição deve ter no mínimo 5 caracteres"
           />
           <div className="mt-3">
@@ -180,7 +195,10 @@ function Form() {
             />
 
             <div className="col-12 d-flex justify-content-end mb-3">
-              <div className={ `${points > 0 && points <= 270 ? 'text-success' : 'text-danger '} me-5` }>
+              <div
+                className={ `${points > 0 && points <= 270
+                  ? 'text-success' : 'text-danger '} me-5` }
+              >
                 <span id="pontos-restantes">
                   Pontos restantes:
                   {' '}
@@ -195,22 +213,20 @@ function Form() {
             inline
             type="text"
             label="Imagem"
-            icon={ { icon: 'bi bi-link-45deg', iconId: 'icon-link', spanId: 'span-link' } }
+            icon={ {
+              icon: 'bi bi-link-45deg',
+              iconId: 'icon-link',
+              spanId: 'span-link' } }
             className=""
             placeholder="link da imagem"
           />
 
           <InputSelect
             onChange={ handleChange }
-            className=""
+            className="mt-4"
             id="raridade"
             label="Raridade"
-            options={ [
-              'Comum',
-              'Raro',
-              'Épico',
-              'Lendário',
-            ] }
+            options={ RaridadeOptions }
           />
         </div>
         <div className="container mt-5">
@@ -222,13 +238,25 @@ function Form() {
               label="Super Trybe Trunfo"
             />
 
-            <Card className="d-md-none col-12" />
+            <Card
+              preview
+              className="d-md-none col-12"
+              nome={ card.nome }
+              descricao={ card.descricao }
+              Attr01={ card.Attr01 }
+              Attr02={ card.Attr02 }
+              Attr03={ card.Attr03 }
+              imagemLink={ card['imagem-link'] }
+              raridade={ card.raridade }
+              SuperTrunfo={ card['Super-trunfo'] }
+              attrFontSize="1em"
+            />
 
             <div id="button" className="d-flex justify-content-center ">
               <Button
                 className="col-10 mt-5 mt-md-0"
                 text="Salvar"
-                onClick={ () => {} }
+                onClick={ handleClick }
                 disabled={ buttonDisable }
               />
             </div>
