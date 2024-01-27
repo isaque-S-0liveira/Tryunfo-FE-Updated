@@ -1,0 +1,16 @@
+#all-cards-main {
+    border: 2px solid #fff;
+    height: auto;
+    max-width: 1320px;
+}
+
+#all-cards-main i {
+    color: rgb(137, 181, 159);
+    font-size: 2em;
+    transition: .5s;
+}
+
+#all-cards-main i:hover {
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
