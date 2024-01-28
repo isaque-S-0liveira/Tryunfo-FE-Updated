@@ -1,7 +1,3 @@
-/* eslint-disable max-lines */
-/* eslint-disable react/jsx-max-depth */
-/* eslint-disable react-hooks/rules-of-hooks */
-
 import { useContext, useEffect, useState } from 'react';
 import Input from './Input';
 import './Form.css';
@@ -21,42 +17,65 @@ function Form() {
   const ATTR_MESSAGE = 'Atributo deve ser um número entre 0 e 90';
   const { setCardCT } = useContext(CardContext);
   const { setAllCardCT } = useContext(allCardContext);
+
   const [buttonDisable, setButtonDisable] = useState(true);
+  const [card, setCard] = useState(initialCardState);
+  const [points, setPoints] = useState(270);
+
   const [feedbackName, setFeedbackName] = useState('');
   const [feedbackDescricao, setFeedbackDescricao] = useState('');
   const [feedbackAtt1, setFeedbackAtt1] = useState('');
   const [feedbackAtt2, setFeedbackAtt2] = useState('');
   const [feedbackAtt3, setFeedbackAtt3] = useState('');
-  const [points, setPoints] = useState(270);
-  const [card, setCard] = useState(initialCardState);
-  const [allCards, setAllCards] = useState<CardType[]>([]);
+  const [inputName, setInputName] = useState<string | number>('');
+  const [inputDescricao, setInputDescricao] = useState<string | number>('');
+  const [inputAttr01, setInputAttr01] = useState<string | number>(0);
+  const [inputAttr02, setInputAttr02] = useState<string | number>(0);
+  const [inputAttr03, setInputAttr03] = useState<string | number>(0);
+  const [inputImagemLink, setInputImagemLink] = useState<string | number>('');
+  const [inputRaridade, setInputRaridade] = useState<string | number>('');
+  const [inputSuperTrunfo, setInputSuperTrunfo] = useState(false);
 
   const handleClick = () => {
+    // Cria um novo cartão com um ID único
     const newCard: CardType = {
       ...card,
-      id: allCards.length + 1,
+      id: new Date().getTime(),
     };
-    setAllCards((prevAllCards) => [...prevAllCards, newCard]);
-  };
 
-  useEffect(() => {
-    setAllCardCT(allCards);
-  }, [allCards]);
+    // Lê os cartões existentes do localStorage
+    const storedCards = localStorage.getItem('allCards');
+    let existingCards: CardType[] = [];
+    if (storedCards) {
+      existingCards = JSON.parse(storedCards);
+    }
+
+    // Adiciona o novo cartão à lista existente
+    const newAllCards = [...existingCards, newCard];
+
+    // Salva a lista atualizada no localStorage
+    const stringJSON = JSON.stringify(newAllCards);
+    localStorage.setItem('allCards', stringJSON);
+
+    setAllCardCT(stringJSON);
+
+    setCard(initialCardState);
+    setInputName('');
+    setInputDescricao('');
+    setInputAttr01(0);
+    setInputAttr02(0);
+    setInputAttr03(0);
+    setInputImagemLink('');
+    setInputRaridade('Comum');
+    setInputSuperTrunfo(false);
+  };
 
   const handleChange = (event: GenericInputEvent) => {
     const { id, value, type } = event.target;
     setCard((prevCard) => ({
       ...prevCard,
-      [id]: value,
+      [id]: type === 'checkbox' ? (event.target as HTMLInputElement).checked : value,
     }));
-
-    if (type === 'checkbox') {
-      const target = event.target as HTMLInputElement;
-      setCard((prevCard) => ({
-        ...prevCard,
-        [id]: target.checked,
-      }));
-    }
   };
 
   useEffect(() => {
@@ -112,19 +131,10 @@ function Form() {
   createAttributeEffect('Attr03', setFeedbackAtt3);
 
   useEffect(() => {
-    const feedbacks = [
-      feedbackName,
-      feedbackDescricao,
-      feedbackAtt1,
-      feedbackAtt2,
-      feedbackAtt3,
-    ];
-
-    const allFeedbacksSuccess = feedbacks.every((feedback) => feedback === 'success');
-
+    const feedbacks = ['feedbackName', 'feedbackDescricao', 'feedbackAtt1', 'feedbackAtt2', 'feedbackAtt3'];
+    const allFeedbacksSuccess = feedbacks.every((feedback) => card[feedback] === 'success');
     setButtonDisable(!allFeedbacksSuccess);
-  }, [feedbackName, feedbackDescricao, feedbackAtt1, feedbackAtt2, feedbackAtt3]);
-
+  }, [card]);
   return (
     <div
       id="newCheapContainer"
@@ -143,6 +153,9 @@ function Form() {
             label="Nome:"
             feedBack={ feedbackName }
             feedBackMessage="Nome deve ter no mínimo 3 caracteres"
+            value={ inputName }
+            setInput={ setInputName }
+
           />
           <Input
             id="descricao"
@@ -152,6 +165,9 @@ function Form() {
             onChange={ handleChange }
             feedBack={ feedbackDescricao }
             feedBackMessage="Descrição deve ter no mínimo 5 caracteres"
+            value={ inputDescricao }
+            setInput={ setInputDescricao }
+
           />
           <div className="mt-3">
             <Input
@@ -166,6 +182,8 @@ function Form() {
               max={ 90 }
               feedBack={ feedbackAtt1 }
               feedBackMessage={ ATTR_MESSAGE }
+              value={ inputAttr01 }
+              setInput={ setInputAttr01 }
             />
             <Input
               onChange={ handleChange }
@@ -179,6 +197,8 @@ function Form() {
               max={ 90 }
               feedBack={ feedbackAtt2 }
               feedBackMessage={ ATTR_MESSAGE }
+              value={ inputAttr02 }
+              setInput={ setInputAttr02 }
             />
             <Input
               onChange={ handleChange }
@@ -192,6 +212,8 @@ function Form() {
               max={ 90 }
               feedBack={ feedbackAtt3 }
               feedBackMessage={ ATTR_MESSAGE }
+              value={ inputAttr03 }
+              setInput={ setInputAttr03 }
             />
 
             <div className="col-12 d-flex justify-content-end mb-3">
@@ -219,6 +241,8 @@ function Form() {
               spanId: 'span-link' } }
             className=""
             placeholder="link da imagem"
+            value={ inputImagemLink }
+            setInput={ setInputImagemLink }
           />
 
           <InputSelect
@@ -227,6 +251,8 @@ function Form() {
             id="raridade"
             label="Raridade"
             options={ RaridadeOptions }
+            value={ inputRaridade }
+            setInput={ setInputRaridade }
           />
         </div>
         <div className="container mt-5">
@@ -236,6 +262,8 @@ function Form() {
               className="col-12 mb-5 mb-md-0"
               id="Super-trunfo"
               label="Super Trybe Trunfo"
+              valueChekBox={ inputSuperTrunfo }
+              setCheckBox={ setInputSuperTrunfo }
             />
 
             <Card

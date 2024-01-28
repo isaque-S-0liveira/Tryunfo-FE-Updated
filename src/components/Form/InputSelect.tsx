@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { InputSelectProps } from '../../types/Form';
 import { GenericInputEvent } from '../../types/InputEvents';
 import handleInputChange from '../../helpers/InputController';
@@ -9,12 +8,12 @@ function InputSelect({
   label,
   options,
   className,
+  value,
+  setInput,
   onChange,
 }: InputSelectProps) {
-  const [selectedOption, setSelectedOption] = useState<string | number>('');
-
   const handleInput = (event: GenericInputEvent) => {
-    handleInputChange(event, setSelectedOption, onChange);
+    handleInputChange(event, setInput, onChange);
   };
 
   return (
@@ -26,7 +25,7 @@ function InputSelect({
           aria-label="Raridade"
           className="form-select"
           id={ id }
-          value={ selectedOption }
+          value={ value }
           onChange={ handleInput }
         >
           {options.map((option) => (

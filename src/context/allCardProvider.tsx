@@ -1,14 +1,13 @@
 // /src/context/cardProvider.tsx
 import { useState } from 'react';
 import allCardContext from './allCardContext';
-import { CardType } from '../types/card';
 
 type AllCardProviderProps = {
   children: React.ReactNode;
 };
 
 function AllCardProvider({ children }: AllCardProviderProps) {
-  const [allCardCT, setAllCardCT] = useState<CardType[]>([]);
+  const [allCardCT, setAllCardCT] = useState<string>('');
 
   return (
     <allCardContext.Provider value={ { allCardCT, setAllCardCT } }>

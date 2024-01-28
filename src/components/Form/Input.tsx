@@ -16,13 +16,14 @@ function Input({
   icon,
   feedBack,
   feedBackMessage,
+  value,
+  setInput,
   onChange,
 }: BaseInputProps) {
   const InputTag = tag || 'input';
-  const [inputValue, setInputValue] = useState<string | number>('');
-
   const handleInput = (event: GenericInputEvent) => {
-    handleInputChange(event, setInputValue, onChange);
+    onChange(event);
+    handleInputChange(event, setInput, onChange);
   };
 
   return (
@@ -34,7 +35,7 @@ function Input({
         <div className="input-group col">
           <InputTag
             onChange={ handleInput }
-            value={ inputValue }
+            value={ value }
             type={ type }
             className="form-control"
             id={ id }

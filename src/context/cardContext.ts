@@ -6,7 +6,6 @@ type CardContextType = {
   cardCT: CardType;
   setCardCT: React.Dispatch<React.SetStateAction<CardType>>
 };
-
 const cardContext = createContext({} as CardContextType);
 
 export default cardContext;

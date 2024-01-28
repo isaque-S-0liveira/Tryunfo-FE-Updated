@@ -1,12 +1,16 @@
-import { useState } from 'react';
-import { BaseInputProps } from '../../types/Form';
+import { InputCheckboxProps } from '../../types/Form';
 import { CheckboxInputEvent } from '../../types/InputEvents';
 
-function CheckBox({ id, label, className, onChange }: BaseInputProps) {
-  const [inputValue, setInputValue] = useState(false);
-
+function CheckBox({
+  id,
+  label,
+  className,
+  valueChekBox,
+  setCheckBox,
+  onChange,
+}: InputCheckboxProps) {
   const handleCheckBoxChange = (event: CheckboxInputEvent) => {
-    setInputValue((prevValue) => {
+    setCheckBox((prevValue) => {
       const newValue = !prevValue;
       onChange(event);
       return newValue;
@@ -17,9 +21,9 @@ function CheckBox({ id, label, className, onChange }: BaseInputProps) {
     <div className={ `${className} form-check` }>
       <input
         className="form-check-input"
-        checked={ inputValue }
+        checked={ valueChekBox }
         type="checkbox"
-        value={ String(inputValue) }
+        value={ String(valueChekBox) }
         id={ id }
         onChange={ handleCheckBoxChange }
       />

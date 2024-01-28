@@ -5,6 +5,8 @@ export type BaseInputProps = {
   label?: string;
   type?: string;
   inline?: boolean;
+  value: string | number;
+  setInput: React.Dispatch<React.SetStateAction<string | number>>;
   tag?: 'input' | 'textarea';
   className?: string;
   placeholder?: string;
@@ -27,6 +29,15 @@ export type InputGroupProps = BaseInputProps & {
 
 export type InputSelectProps = BaseInputProps & {
   options: string[];
+};
+
+export type InputCheckboxProps = {
+  id: string;
+  label?: string;
+  className?: string;
+  onChange: (event: GenericInputEvent) => void;
+  setCheckBox: React.Dispatch<React.SetStateAction<boolean>>;
+  valueChekBox: boolean;
 };
 
 export type ButtonProps = {

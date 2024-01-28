@@ -1,10 +1,9 @@
 // /src/context/cardContext.ts
 import { createContext } from 'react';
-import { CardType } from '../types/card';
 
 type AllCardContextType = {
-  allCardCT: CardType[];
-  setAllCardCT: React.Dispatch<React.SetStateAction<CardType[]>>
+  allCardCT: string;
+  setAllCardCT: React.Dispatch<React.SetStateAction<string>>
 };
 
 const allCardContext = createContext({} as AllCardContextType);
