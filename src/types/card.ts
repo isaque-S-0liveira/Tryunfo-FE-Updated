@@ -11,6 +11,7 @@ export type CardType = {
 };
 
 export type CardTypeProps = {
+  id?: number;
   preview?: boolean;
   className?: string;
   nome: string;
@@ -22,4 +23,5 @@ export type CardTypeProps = {
   imagemLink : string,
   SuperTrunfo : boolean,
   attrFontSize: string,
+  onClick?: (id:number) => void;
 };

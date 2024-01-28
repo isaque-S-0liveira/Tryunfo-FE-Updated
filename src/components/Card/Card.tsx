@@ -20,6 +20,8 @@ function Card(
     SuperTrunfo,
     preview,
     attrFontSize,
+    onClick,
+    id,
     className }: CardTypeProps,
 ) {
   const GIF_DEFAULT = 'https://i.pinimg.com/originals/32/44/01/324401aa18cc80c55f338dcd4674cb80.gif';
@@ -33,6 +35,13 @@ function Card(
     }
   }, [imagemLink]);
 
+  const handleClick = (cardId: number) => {
+    // e.preventDefault();
+    if (onClick) {
+      onClick(cardId);
+    }
+  };
+
   return (
     <section id="card-main-container" className={ ` ${className}` }>
       <Title
@@ -44,7 +53,13 @@ function Card(
       <div id="card-container" className="container">
         <div className={ `${preview && 'pt-3'} pb-3 ` }>
           <div className={ `${preview && 'd-none'} text-center` }>
-            <span><i className="bi bi-trash-fill" /></span>
+            <button
+              className="btn border-0"
+              onClick={ () => handleClick(id || 0) }
+              aria-label="Delete Card"
+            >
+              <i className="bi bi-trash-fill" />
+            </button>
           </div>
           <header className="card-header">
             <span id={ raridade } className="Raridade">{raridade}</span>

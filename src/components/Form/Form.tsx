@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-max-depth */
+/* eslint-disable max-lines */
 import { useContext, useEffect, useState } from 'react';
 import Input from './Input';
 import './Form.css';
@@ -20,6 +22,7 @@ function Form() {
 
   const [buttonDisable, setButtonDisable] = useState(true);
   const [card, setCard] = useState(initialCardState);
+  const [allCards, setAllCards] = useState<CardType[]>([]);
   const [points, setPoints] = useState(270);
 
   const [feedbackName, setFeedbackName] = useState('');
@@ -33,6 +36,8 @@ function Form() {
   const [inputAttr02, setInputAttr02] = useState<string | number>(0);
   const [inputAttr03, setInputAttr03] = useState<string | number>(0);
   const [inputImagemLink, setInputImagemLink] = useState<string | number>('');
+  const [checkboxDisable, setCheckboxDisable] = useState(false);
+
   const [inputRaridade, setInputRaridade] = useState<string | number>('');
   const [inputSuperTrunfo, setInputSuperTrunfo] = useState(false);
 
@@ -56,9 +61,22 @@ function Form() {
     // Salva a lista atualizada no localStorage
     const stringJSON = JSON.stringify(newAllCards);
     localStorage.setItem('allCards', stringJSON);
-
+    setAllCards(newAllCards);
     setAllCardCT(stringJSON);
+    handleReset();
+  };
 
+  useEffect(() => {
+    const superTryunfo = allCards.some((c) => c['Super-trunfo'] === true);
+
+    if (superTryunfo) {
+      setCheckboxDisable(true);
+    } else {
+      setCheckboxDisable(false);
+    }
+  }, [allCards]);
+
+  const handleReset = () => {
     setCard(initialCardState);
     setInputName('');
     setInputDescricao('');
@@ -131,10 +149,18 @@ function Form() {
   createAttributeEffect('Attr03', setFeedbackAtt3);
 
   useEffect(() => {
-    const feedbacks = ['feedbackName', 'feedbackDescricao', 'feedbackAtt1', 'feedbackAtt2', 'feedbackAtt3'];
-    const allFeedbacksSuccess = feedbacks.every((feedback) => card[feedback] === 'success');
+    const feedbacks = [
+      feedbackName,
+      feedbackDescricao,
+      feedbackAtt1,
+      feedbackAtt2,
+      feedbackAtt3,
+    ];
+
+    const allFeedbacksSuccess = feedbacks.every((feedback) => feedback === 'success');
+
     setButtonDisable(!allFeedbacksSuccess);
-  }, [card]);
+  }, [feedbackName, feedbackDescricao, feedbackAtt1, feedbackAtt2, feedbackAtt3]);
   return (
     <div
       id="newCheapContainer"
@@ -264,6 +290,7 @@ function Form() {
               label="Super Trybe Trunfo"
               valueChekBox={ inputSuperTrunfo }
               setCheckBox={ setInputSuperTrunfo }
+              disabled={ checkboxDisable }
             />
 
             <Card

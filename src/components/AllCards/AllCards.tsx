@@ -17,6 +17,16 @@ function AllCards() {
     setAllCards(cardsFromStorage);
   }, [allCardCT]);
 
+  const deleteCard = (id: number) => {
+    // Recupera o id do cartão clicado
+    // Filtra os cartões que não possuem o id do cartão clicado
+    const newCards = allCards.filter((card) => card.id !== id);
+    // Atualiza o estado com os cartões filtrados
+    setAllCards(newCards);
+    // Atualiza o localStorage com os cartões filtrados
+    localStorage.setItem('allCards', JSON.stringify(newCards));
+  };
+
   return (
     <section
       id="all-cards-main"
@@ -37,6 +47,8 @@ function AllCards() {
             raridade={ card.raridade }
             SuperTrunfo={ card['Super-trunfo'] }
             attrFontSize=".9em"
+            onClick={ deleteCard }
+            id={ card.id }
           />
         ))}
       </div>

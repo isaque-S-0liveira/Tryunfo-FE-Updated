@@ -8,6 +8,7 @@ function CheckBox({
   valueChekBox,
   setCheckBox,
   onChange,
+  disabled,
 }: InputCheckboxProps) {
   const handleCheckBoxChange = (event: CheckboxInputEvent) => {
     setCheckBox((prevValue) => {
@@ -25,6 +26,7 @@ function CheckBox({
         type="checkbox"
         value={ String(valueChekBox) }
         id={ id }
+        disabled={ disabled }
         onChange={ handleCheckBoxChange }
       />
       <label className="form-check-label" htmlFor={ id }>

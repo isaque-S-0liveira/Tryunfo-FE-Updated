@@ -35,6 +35,7 @@ export type InputCheckboxProps = {
   id: string;
   label?: string;
   className?: string;
+  disabled: boolean;
   onChange: (event: GenericInputEvent) => void;
   setCheckBox: React.Dispatch<React.SetStateAction<boolean>>;
   valueChekBox: boolean;
