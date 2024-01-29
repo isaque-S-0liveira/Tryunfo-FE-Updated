@@ -13,6 +13,7 @@ export type BaseInputProps = {
   min?: number;
   max?: number;
   feedBack?: string;
+  hasFeedBack?: boolean;
   feedBackMessage?: string;
   icon?: {
     spanId?: string;
@@ -33,9 +34,10 @@ export type InputSelectProps = BaseInputProps & {
 
 export type InputCheckboxProps = {
   id: string;
+  idContainer?: string;
   label?: string;
   className?: string;
-  disabled: boolean;
+  disabled?: boolean;
   onChange: (event: GenericInputEvent) => void;
   setCheckBox: React.Dispatch<React.SetStateAction<boolean>>;
   valueChekBox: boolean;

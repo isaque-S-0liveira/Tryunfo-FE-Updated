@@ -1,8 +1,82 @@
 #all-cards-main {
-    border: 2px solid #fff;
-    height: auto;
-    max-width: 1320px;
+   height: auto;
+   max-width: 1320px;
+   min-height: 1000px;
 }
+
+
+
+#all-cards-main form {
+    background-color: rgba(3, 107, 82, 1);
+    min-height: 75px;
+}
+
+#all-cards-main form .row {
+    align-items: center;
+}
+
+#filterForm h3 {
+    color: #fff;
+    padding-top: 16px;
+    font-size: 1.3em;
+    white-space: nowrap;
+}
+
+#filterForm #search {
+    border-radius: 6px;
+    background-color: transparent;
+    padding: 12px;
+    color: #fff;
+}
+
+#filterForm #search:focus {
+    border-color: #fff;
+    box-shadow: none;
+}
+
+#filterForm #search::placeholder {
+    color: #fff;
+}
+
+
+#filterForm #FilterRarity {
+    border-radius: 6px;
+    background-color: transparent;
+    padding: 12px;
+    color: #64e883;
+    font-weight: bolder;
+}
+
+#filterForm #FilterRarity:focus {
+    border-color: #fff;
+    box-shadow: none;
+}
+
+
+#filterForm #SuperTrunfoFilter:checked {
+    background-color: #03df4d; 
+    box-shadow: none;
+    border: none;
+}
+
+#filterForm #SuperTrunfoFilter:focus{
+    box-shadow: none;
+    border: none;
+}
+
+
+
+#filterForm #SuperTrunfoFilterContainer label {
+    color: #f7f7f7;   
+    font-weight: 600;
+    white-space: nowrap;
+} 
+
+#filterForm #SuperTrunfoFilterContainer  {
+    /* margin-left: 16px; */
+}
+
+
 
 #all-cards-main i {
     color: rgb(137, 181, 159);

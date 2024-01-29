@@ -9,6 +9,7 @@ function InputSelect({
   options,
   className,
   value,
+  hasFeedBack,
   setInput,
   onChange,
 }: InputSelectProps) {
@@ -23,7 +24,7 @@ function InputSelect({
       <div className="d-flex">
         <select
           aria-label="Raridade"
-          className="form-select"
+          className="form-select custom-select custom-dropdown"
           id={ id }
           value={ value }
           onChange={ handleInput }
@@ -34,7 +35,7 @@ function InputSelect({
             </option>
           ))}
         </select>
-        <div className="feedback" />
+        <div className={ `${hasFeedBack ? 'feedback' : 'd-none'}` } />
       </div>
     </div>
   );

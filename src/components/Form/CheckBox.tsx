@@ -9,6 +9,7 @@ function CheckBox({
   setCheckBox,
   onChange,
   disabled,
+  idContainer,
 }: InputCheckboxProps) {
   const handleCheckBoxChange = (event: CheckboxInputEvent) => {
     setCheckBox((prevValue) => {
@@ -19,7 +20,7 @@ function CheckBox({
   };
 
   return (
-    <div className={ `${className} form-check` }>
+    <div id={ idContainer } className={ `${className} form-check` }>
       <input
         className="form-check-input"
         checked={ valueChekBox }

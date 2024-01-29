@@ -181,6 +181,7 @@ function Form() {
             feedBackMessage="Nome deve ter no mínimo 3 caracteres"
             value={ inputName }
             setInput={ setInputName }
+            hasFeedBack
 
           />
           <Input
@@ -193,6 +194,7 @@ function Form() {
             feedBackMessage="Descrição deve ter no mínimo 5 caracteres"
             value={ inputDescricao }
             setInput={ setInputDescricao }
+            hasFeedBack
 
           />
           <div className="mt-3">
@@ -210,6 +212,7 @@ function Form() {
               feedBackMessage={ ATTR_MESSAGE }
               value={ inputAttr01 }
               setInput={ setInputAttr01 }
+              hasFeedBack
             />
             <Input
               onChange={ handleChange }
@@ -225,6 +228,7 @@ function Form() {
               feedBackMessage={ ATTR_MESSAGE }
               value={ inputAttr02 }
               setInput={ setInputAttr02 }
+              hasFeedBack
             />
             <Input
               onChange={ handleChange }
@@ -240,6 +244,7 @@ function Form() {
               feedBackMessage={ ATTR_MESSAGE }
               value={ inputAttr03 }
               setInput={ setInputAttr03 }
+              hasFeedBack
             />
 
             <div className="col-12 d-flex justify-content-end mb-3">
@@ -269,6 +274,7 @@ function Form() {
             placeholder="link da imagem"
             value={ inputImagemLink }
             setInput={ setInputImagemLink }
+            hasFeedBack
           />
 
           <InputSelect
@@ -279,6 +285,7 @@ function Form() {
             options={ RaridadeOptions }
             value={ inputRaridade }
             setInput={ setInputRaridade }
+            hasFeedBack
           />
         </div>
         <div className="container mt-5">

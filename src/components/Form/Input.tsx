@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import handleInputChange from '../../helpers/InputController';
 import { GenericInputEvent } from '../../types/InputEvents';
 import { BaseInputProps } from '../../types/Form';
@@ -14,6 +13,7 @@ function Input({
   min,
   max,
   icon,
+  hasFeedBack,
   feedBack,
   feedBackMessage,
   value,
@@ -49,7 +49,7 @@ function Input({
               <i id={ icon.iconId } className={ icon.icon } />
             </span>
           )}
-          <div className="feedback">
+          <div className={ `${hasFeedBack ? 'feedback' : 'd-none'}` }>
             {feedBack === '' && <span />}
             {feedBack === 'success'
            && <span><i className="bi bi-check-circle" /></span>}
