@@ -39,7 +39,8 @@
 }
 
 #card-container .card-header h3 {
-    padding-right: 15px;
+    padding-left: 15px;
+    white-space: nowrap;
 }
 
 #card-container .card-header .Raridade {
