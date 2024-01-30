@@ -1,30 +1,68 @@
-# React + TypeScript + Vite
+# Tryunfo 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## Pré-Visualização do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Veja a aplicação funcionando [clicando aqui  ](https://isaque-s-0liveira.github.io/Tryunfo-FE-Updated/)
 
-## Expanding the ESLint configuration
+<div style="display:flex; justify-content:center;  align-items:center; width="100%">
+  <img src="preview/Captura1.png" alt="Captura de Tela 1" width="400" height="300"/>
+  <img src="preview/captura2.png" alt="Captura de Tela 2" width="400" height="300"/>
+</div>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+# Contexto
+Este projeto trata-se de um jogo no estilo Super Trunfo! Ao utilizar essa aplicação uma pessoa usuária é capaz de:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Criar um baralho com o tema livre;
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Adicionar e remover uma carta do baralho;
+
+- Visualizar todas as cartas que foram adicionadas ao baralho;
+
+- Realizar filtros para encontrar cartas específicas;
+  
+
+## Habilidades Demonstradas
+
+Neste projeto, foram utilizadas as seguintes habilidades:
+
+- Leitura do estado de um componente e utilização para alterar a exibição no navegador.
+- Inicialização de um componente, atribuindo a ele um estado pré-definido.
+- Atualização do estado de um componente.
+- Captura de eventos utilizando a sintaxe do React.
+- Criação de formulários utilizando a sintaxe TSX com as tags: input, textarea, select, form, checkbox.
+- Transmissão de informações de componentes filhos para componentes pais via callbacks.
+
+
+## Técnologias usadas
+
+Front-end:
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Context API](https://reactjs.org/docs/context.html)
+- [Bootstrap 5](https://getbootstrap.com/)
+- CSS3
+
+## Executando aplicação
+
+* Clone o repositório:
+  ```
+    git clone git@github.com:isaque-S-0liveira/Tryunfo-FE-Updated.git
+  ```
+* Entre na pasta do repositório que você acabou de clonar:
+
+  ```
+    cd Tryunfo-FE-Updated/
+  ```
+* Instale as dependências:
+  ```
+    npm install
+  ```
+
+* Inicialize a aplicação com o comando: 
+  ```
+    npm run dev
+  ```
+
+
