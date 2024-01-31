@@ -3,7 +3,7 @@
 
 ## Pré-Visualização do Projeto
 
-### Veja a aplicação funcionando [clicando aqui  ](https://isaque-s-0liveira.github.io/Tryunfo-FE-Updated/)
+### Veja a aplicação funcionando <a href="https://isaque-s-0liveira.github.io/Tryunfo-FE-Updated/" target="_blank">clicando aqui</a>
 
 <div style="display:flex; justify-content:center;  align-items:center; width="100%">
   <img src="preview/Captura1.png" alt="Captura de Tela 1" width="400" height="300"/>
